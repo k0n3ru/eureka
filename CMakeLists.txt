@@ -14,5 +14,8 @@ find_package(Box2D)
 
 set(EUREKA_INC_DIR ${CMAKE_SOURCE_DIR}/inc)
 
+include(${CMAKE_MODULE_PATH}/constants.cmake) # this should be first
+include(${CMAKE_MODULE_PATH}/resource_config.cmake) #gen resources.h
+
 add_subdirectory(src)
 

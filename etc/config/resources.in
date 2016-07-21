@@ -1,0 +1,12 @@
+#ifndef EUREKA_RESOURCES_H
+#define EUREKA_RESOURCES_H
+
+#include <stdio.h>
+
+namespace Eureka {
+
+const char* const DEBUG_FONT = "@DEBUG_FONT_PATH@";
+
+}//namespace
+
+#endif

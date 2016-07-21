@@ -1,6 +1,8 @@
 #ifndef EUREKA_SHAPES_H
 #define EUREKA_SHAPES_H
 
+#include "resources.h"
+
 #include <SFML/Graphics.hpp>
 
 namespace Eureka {

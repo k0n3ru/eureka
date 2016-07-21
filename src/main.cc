@@ -1,5 +1,6 @@
+#include "shapes.h"
+
 #include <iostream>
-#include <shapes.h>
 #include <SFML/Window.hpp>
 
 int main()
@@ -22,7 +23,14 @@ int main()
 				window.close();
 			switch(event.type)
 			{
-case : sf::Event::KeyPressed
+				case sf::Event::KeyPressed:
+					switch(event.key.code)
+					{
+						case sf::Keyboard::Up :
+							block_1.rotate(90);
+							break;
+						default: break;
+					}
 				default: break;
 			}
 		}
