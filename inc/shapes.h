@@ -20,10 +20,20 @@ enum TetrominoType
 */
 };
 
+/*
+ * TODO
+ * 	refcount on number of quads and delete if last one deleted
+ *	transfer of ownership of quads to getter
+ *
+ *
+ *
+ */
+
 class Tetromino:public sf::Drawable, public sf::Transformable
 {
 public:
 	Tetromino(sf::Vector2f,TetrominoType);
+	void rotate(float angle);
 
 private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const ;

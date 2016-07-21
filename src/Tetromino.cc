@@ -29,13 +29,21 @@ void buildQuad(sf::VertexArray*& quad,sf::Vector2f position)
 	(*quad)[3].color = sf::Color::Magenta;
 }
 
+void Tetromino::rotate(float angle)
+{
+
+	sf::Transformable::rotate(angle); //call super class
+}
+
 
 void Tetromino::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	states.transform *= getTransform();
+
 	//operate on all the quads in this tetromino
 	for(int i=0;i<NUM_QUADS;i++)
 	{
-		target.draw(*quads_[i]);
+		target.draw(*quads_[i],states);
 	}
 }
 
@@ -48,6 +56,8 @@ void Tetromino::build(sf::Vector2f position,TetrominoType type)
 			buildQuad(quads_[1],(*(quads_[0]))[3].position);
 			buildQuad(quads_[2],(*(quads_[1]))[3].position);
 			buildQuad(quads_[3],(*(quads_[2]))[3].position);
+			setOrigin((*(quads_[1]))[3].position);
+			setPosition(position);
 			break;
 		case SHAPE_J:
 			buildQuad(quads_[0],position);
@@ -56,6 +66,8 @@ void Tetromino::build(sf::Vector2f position,TetrominoType type)
 			buildQuad(quads_[3],
 			sf::Vector2f((*(quads_[2]))[0].position.x - QUAD_SIDE,
 			(*(quads_[2]))[0].position.y));
+			setPosition(position);
+			setOrigin((*(quads_[1]))[3].position);
 			break;
 		case SHAPE_L:
 			buildQuad(quads_[0],position);
@@ -64,12 +76,16 @@ void Tetromino::build(sf::Vector2f position,TetrominoType type)
 			buildQuad(quads_[3],
 			sf::Vector2f((*(quads_[2]))[0].position.x + QUAD_SIDE,
 			(*(quads_[2]))[0].position.y));
+			setPosition(position);
+			setOrigin((*(quads_[1]))[3].position);
 			break;
 		case SHAPE_Z:
 			buildQuad(quads_[0],position);
 			buildQuad(quads_[1],(*(quads_[0]))[1].position);
 			buildQuad(quads_[2],(*(quads_[1]))[3].position);
 			buildQuad(quads_[3],(*(quads_[2]))[1].position);
+			setPosition(position);
+			setOrigin((*(quads_[1]))[3].position);
 			break;
 		default:
 			abort();

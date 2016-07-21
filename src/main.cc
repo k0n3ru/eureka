@@ -20,6 +20,11 @@ int main()
 		{
 			if(event.type == sf::Event::Closed)
 				window.close();
+			switch(event.type)
+			{
+case : sf::Event::KeyPressed
+				default: break;
+			}
 		}
 		window.clear(sf::Color::Black);
 		window.draw(block_1);
